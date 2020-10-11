@@ -2845,6 +2845,27 @@ $as_echo "$as_me: WARNING: Please consider upgrading as some ports fail compilin
     ;;
 esac
 
+# Check whether the source location is valid; Tcl does not build in
+# locations containing spaces, and we don't support out-of-source
+# builds.
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for in-tree build" >&5
+$as_echo_n "checking for in-tree build... " >&6; }
+if test "x$srcdir" != "x."; then
+   as_fn_error $? "failed; out-of-source builds not supported" "$LINENO" 5
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
+$as_echo "ok" >&6; }
+fi
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking whether source directory location is valid" >&5
+$as_echo_n "checking whether source directory location is valid... " >&6; }
+if echo "$ac_abs_confdir" | grep -q ' '; then
+   as_fn_error $? "failed; path to source directory must not contain spaces" "$LINENO" 5
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
+$as_echo "ok" >&6; }
+fi
+
 # Checks for programs.
 ac_ext=c
 ac_cpp='$CPP $CPPFLAGS'
